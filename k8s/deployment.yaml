@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: docker
+  name: docker
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: docker
+  template:
+    metadata:
+      labels:
+        run: docker
+    spec:
+      containers:
+      - image: gcr.io/burner-sanmahto/docker:latest
+        name: docker
+        ports:
+        - containerPort: 8080
